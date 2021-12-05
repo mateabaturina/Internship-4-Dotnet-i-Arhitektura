@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Entities
 {
-    class RAM: Component
+    public class Component
     {
-        public RAM(int size, int price)
-        {
-            Size = size;
-            Price = price;
-        }
+        public float Weight;
+        public int Size;
+        public int Price;
     }
 }

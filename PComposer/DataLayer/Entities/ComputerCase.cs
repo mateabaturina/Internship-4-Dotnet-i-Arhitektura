@@ -7,15 +7,14 @@ using DataLayer.Enums;
 
 namespace DataLayer.Entities
 {
-    class ComputerCase
+    class ComputerCase: Component
     {
         public ComputerCaseMaterials Material { get; set; }
-        public float Weight { get; set; }
-
-        public ComputerCase(ComputerCaseMaterials material, float weight)
+        public ComputerCase(ComputerCaseMaterials material, float weight, int price)
         {
             Material = material;
             Weight = weight;
+            Price = price;
         }
     }
 }

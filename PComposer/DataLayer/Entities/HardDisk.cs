@@ -7,17 +7,16 @@ using DataLayer.Enums;
 
 namespace DataLayer.Entities
 {
-    class HardDisk
+    class HardDisk: Component
     {
         public Drive TypeOfDrive { get; set; }
-        public int Weight { get; set; }
-        public int Size { get; set; }
 
-        public HardDisk(Drive typeOfDrive, int weight, int size)
+        public HardDisk(Drive typeOfDrive, int weight, int size, int price)
         {
             TypeOfDrive = typeOfDrive;
             Weight = weight;
             Size = size;
+            Price = price;
         }
 
     }

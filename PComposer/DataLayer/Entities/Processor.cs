@@ -7,15 +7,16 @@ using DataLayer.Enums;
 
 namespace DataLayer.Entities
 {
-    class Processor
+    class Processor: Component
     {
         public Core TypeOfCore { get; set; }
-        public ListOfManufacturers Manufecterer { get; set;}
+        public ListOfManufacturers Manufacturer { get; set;}
 
-        public Processor(Core typeOfCore, ListOfManufacturers manufacterer)
+        public Processor(Core typeOfCore, ListOfManufacturers manufacturer, int price)
         {
             TypeOfCore = typeOfCore;
-            Manufecterer = manufacterer;
+            Manufacturer = manufacturer;
+            Price = price;
         }
     }
 }
