@@ -121,17 +121,32 @@ namespace PComposer
             Console.Clear();
             Console.WriteLine("Odaberite kuciste:");
 
-            var listOfComputerCase = DomainLayer.GetSetData.GetData.GetComputerCase();
+            var listOfComputerCases = DomainLayer.GetSetData.GetData.GetComputerCase();
 
             var count = 1;
 
-            foreach (var computerCase in listOfComputerCase)
+            foreach (var computerCase in listOfComputerCases)
             {
                 Console.WriteLine(count++ + " - " + computerCase);
             }
 
             Console.WriteLine("\r\nUnesite odabir: ");
-            Console.ReadLine();
+            var userChoice = Console.ReadLine();
+
+            switch (userChoice)
+            {
+                case "0":
+                    DomainLayer.GetSetData.SetData.SetComputerCase(listOfComputerCases[0]);
+                    break;
+
+                case "1":
+                    DomainLayer.GetSetData.SetData.SetComputerCase(listOfComputerCases[1]);
+                    break;
+
+                case "2":
+                    DomainLayer.GetSetData.SetData.SetComputerCase(listOfComputerCases[2]);
+                    break;
+            }
         }
 
         private static void SelectHardDisc()
@@ -149,7 +164,26 @@ namespace PComposer
             }
 
             Console.WriteLine("\r\nUnesite odabir: ");
-            Console.ReadLine();
+            var userChoice = Console.ReadLine();
+
+            switch (userChoice)
+            {
+                case "0":
+                    DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[0]);
+                    break;
+
+                case "1":
+                    DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[1]);
+                    break;
+
+                case "2":
+                    DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[2]);
+                    break;
+
+                case "3":
+                    DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[3]);
+                    break;
+            }
         }
 
         private static void SelectProcessor()
@@ -167,7 +201,26 @@ namespace PComposer
             }
 
             Console.WriteLine("\r\nUnesite odabir: ");
-            Console.ReadLine();
+            var userChoice = Console.ReadLine();
+
+            switch (userChoice)
+            {
+                case "0":
+                    DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[0]);
+                    break;
+
+                case "1":
+                    DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[1]);
+                    break;
+
+                case "2":
+                    DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[2]);
+                    break;
+
+                case "3":
+                    DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[3]);
+                    break;
+            }
         }
 
         private static void SelectRAM()
@@ -177,7 +230,7 @@ namespace PComposer
 
             var listOfRAMs = DomainLayer.GetSetData.GetData.GetRAM();
 
-            var count = 1;
+            var count = 0;
 
             foreach (var RAM in listOfRAMs)
             {
@@ -185,7 +238,18 @@ namespace PComposer
             }
 
             Console.WriteLine("\r\nUnesite odabir: ");
-            Console.ReadLine();
+            var userChoice = Console.ReadLine();
+
+            switch (userChoice)
+            {
+                case "0":
+                    DomainLayer.GetSetData.SetData.SetRAM(listOfRAMs[0]);
+                    break;
+
+                case "1":
+                    DomainLayer.GetSetData.SetData.SetRAM(listOfRAMs[1]);
+                    break;
+            }
         }
 
     }
