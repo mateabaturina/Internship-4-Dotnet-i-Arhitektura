@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using DataLayer.Entities;
 
 namespace PComposer
 {
@@ -6,6 +8,8 @@ namespace PComposer
     {
         static void Main(string[] args)
         {
+            var listOfOrders = new List<Computer>();
+
             LoginInput();
         }
 
@@ -14,16 +18,17 @@ namespace PComposer
             Console.Clear();
             Console.WriteLine("Dobrodošli u PComposer!");
             Console.WriteLine("Molim vas unesite svoje podatke.");
+
             Console.Write("\r\nUnesite ime: ");
             var name = Console.ReadLine();
+
             Console.Write("\rUnesite prezime: ");
             var surname = Console.ReadLine();
+
             Console.Write("\rUnesite adresu: ");
             var adress = Console.ReadLine();
 
             DomainLayer.GetSetData.SetData.Login(name, surname, adress);
-
-            Console.Clear();
 
             var showMenu = true;
             while (showMenu)
@@ -52,9 +57,9 @@ namespace PComposer
                 case "1":
                     CreatingNewComputer();
                     return true;
-                /*case "2":
+                case "2":
                     ShowOrders();
-                    return true;*/
+                    return true;
                 case "3":
                     Console.WriteLine("Izašli ste iz aplikacije. Doviđenja!");
                     return false;
@@ -88,7 +93,6 @@ namespace PComposer
             {
                 showMenu = CreatingNewComputerMenu();
             }
-
         }
 
         private static bool CreatingNewComputerMenu()
@@ -250,7 +254,83 @@ namespace PComposer
                     DomainLayer.GetSetData.SetData.SetRAM(listOfRAMs[1]);
                     break;
             }
+
+            
         }
 
+        private static void PrintShowOrdersMenu()
+        {
+            Console.Clear();
+
+            Orders();
+
+            Console.WriteLine("Odaberite akciju:");
+            Console.WriteLine();
+            Console.WriteLine("1 - Zakljucite kupovinu");
+            Console.WriteLine("2 - Sastavite novo racunalo");
+            Console.WriteLine("3 - Odustanite od narudbe");
+            Console.Write("\r\nUnesite odabir: ");
+        }
+
+        private static bool ShowOrdersMenu()
+        {
+            PrintShowOrdersMenu();
+
+            switch (Console.ReadLine())
+            {
+                /*case "1":
+                    ConcludePurchase();
+                    return true;*/
+                case "2":
+                    CreatingNewComputer();
+                    return true;
+                case "3":
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
+        private static void ShowOrders()
+        {
+            PrintShowOrdersMenu();
+
+            Console.Clear();
+
+            var showMenu = true;
+            while (showMenu)
+            {
+                showMenu = ShowOrdersMenu();
+            }
+        }
+
+        private static void Orders()
+        {   
+            var user = DomainLayer.DomainLayer.NewUser;
+            var computer = DomainLayer.DomainLayer.NewComputer;
+            var weight = computer.WeightOfTheComputer();
+
+            Console.WriteLine("Kupac: " + user.Name + " " + user.Surname);
+            Console.WriteLine("Tezina racunala je " + computer.WeightOfTheComputer() + " kg.");
+            Console.WriteLine("Cijena racunala je " + computer.ComponentsPrice() + " kn.");
+            Console.WriteLine("Cijena dostave je " + Delivery(weight) + " kn.");
+        }
+
+        private static int Delivery(float weight)
+        {
+            var user = DomainLayer.DomainLayer.NewUser;
+            var priceOfDelivery = 0;
+
+            if (weight < 3)
+                priceOfDelivery = 5 * (user.Distance % 10);
+            
+            if (weight >= 3 & weight < 10)
+                priceOfDelivery = 3 * (user.Distance % 5);
+
+            if (weight >= 10)
+                priceOfDelivery = 50 +  10 * (user.Distance % 20);
+
+            return priceOfDelivery;
+        }
     }
 }

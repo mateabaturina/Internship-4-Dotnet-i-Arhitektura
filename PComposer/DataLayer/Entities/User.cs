@@ -26,5 +26,10 @@ namespace DataLayer.Entities
             Random randomDistance = new Random();
             return (randomDistance.Next(50, 1000));
         }
+
+        public string UserData()
+        {
+            return ("Ime: " + Name + "Prezime: " + Surname + "Adresa: " + Address);
+        }
     }
 }
