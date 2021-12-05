@@ -29,7 +29,7 @@ namespace DomainLayer.GetSetData
             DomainLayer.NewComputer.Processor = processor;
         }
 
-        public static void SetRAM(RAM RAM, int quantity)
+        public static void SetRAM(RAM RAM)
         {
             DomainLayer.NewComputer.RAM = RAM;
         }
