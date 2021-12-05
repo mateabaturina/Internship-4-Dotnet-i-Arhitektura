@@ -13,5 +13,9 @@ namespace DataLayer.Entities
             Size = size;
             Price = price;
         }
+        public override string ToString()
+        {
+            return $"Velicina: {Size}, Cijena: {Price} kn";
+        }
     }
 }

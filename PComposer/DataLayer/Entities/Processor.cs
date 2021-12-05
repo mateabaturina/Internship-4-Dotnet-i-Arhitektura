@@ -18,5 +18,9 @@ namespace DataLayer.Entities
             Manufacturer = manufacturer;
             Price = price;
         }
+        public override string ToString()
+        {
+            return $"Tip: {TypeOfCore}, Proizvodac: {Manufacturer}, Cijena: {Price} kn";
+        }
     }
 }

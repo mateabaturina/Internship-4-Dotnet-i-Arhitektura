@@ -16,5 +16,9 @@ namespace DataLayer.Entities
             Weight = weight;
             Price = price;
         }
+        public override string ToString()
+        {
+            return $"Materijal: {Material}, Tezina: {Weight} kg, Cijena: {Price} kn";
+        }
     }
 }

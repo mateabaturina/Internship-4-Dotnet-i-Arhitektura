@@ -18,6 +18,10 @@ namespace DataLayer.Entities
             Size = size;
             Price = price;
         }
+        public override string ToString()
+        {
+            return $"Tip: {TypeOfDrive}, Tezina: {Weight} kg, Velicina: {Size}, Cijena: {Price} kn";
+        }
 
     }
 }
