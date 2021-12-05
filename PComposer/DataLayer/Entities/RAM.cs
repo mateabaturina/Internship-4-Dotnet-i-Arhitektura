@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Entities
 {
-    class RAM: Component
+    public class RAM: Component
     {
         public RAM(int size, int price)
         {
             Size = size;
             Price = price;
         }
+
         public override string ToString()
         {
             return $"Velicina: {Size}, Cijena: {Price} kn";

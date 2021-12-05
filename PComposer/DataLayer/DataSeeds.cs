@@ -13,10 +13,10 @@ namespace DataLayer
             new ComputerCase(material: ComputerCaseMaterials.Plastic, weight: 1F, price: 150),
             new ComputerCase(material: ComputerCaseMaterials.Carbon, weight: 0.5F, price: 300),
 
-            new HardDisk(typeOfDrive: Drive.HDD, weight: 2, size: 2, price: 350),
-            new HardDisk(typeOfDrive: Drive.HDD, weight: 1, size: 1, price: 300),
-            new HardDisk(typeOfDrive: Drive.SSD, weight: 0, size: 2, price: 600),
-            new HardDisk(typeOfDrive: Drive.SSD, weight: 0, size: 1, price: 550),
+            new HardDisc(typeOfDrive: Drive.HDD, weight: 2, size: 2, price: 350),
+            new HardDisc(typeOfDrive: Drive.HDD, weight: 1, size: 1, price: 300),
+            new HardDisc(typeOfDrive: Drive.SSD, weight: 0, size: 2, price: 600),
+            new HardDisc(typeOfDrive: Drive.SSD, weight: 0, size: 1, price: 550),
 
             new Processor(typeOfCore: Core.DecaCore, manufacturer: ListOfManufacturers.AMD, price: 3500),
             new Processor(typeOfCore: Core.OctaCore, manufacturer: ListOfManufacturers.Intel, price: 3000),

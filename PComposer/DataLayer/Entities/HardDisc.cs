@@ -7,19 +7,22 @@ using DataLayer.Enums;
 
 namespace DataLayer.Entities
 {
-    public class ComputerCase: Component
+    public class HardDisc: Component
     {
-        public ComputerCaseMaterials Material { get; set; }
-        public ComputerCase(ComputerCaseMaterials material, float weight, int price)
+        public Drive TypeOfDrive { get; set; }
+
+        public HardDisc(Drive typeOfDrive, int weight, int size, int price)
         {
-            Material = material;
+            TypeOfDrive = typeOfDrive;
             Weight = weight;
+            Size = size;
             Price = price;
         }
 
         public override string ToString()
         {
-            return $"Materijal: {Material}, Tezina: {Weight} kg, Cijena: {Price} kn";
+            return $"Tip: {TypeOfDrive}, Tezina: {Weight} kg, Velicina: {Size}, Cijena: {Price} kn";
         }
+
     }
 }
