@@ -73,8 +73,6 @@ namespace PComposer
                         break;
                     case 4:
                         SelectRAM();
-                        var computer = DomainLayer.DomainLayer.NewComputer;
-                        listOfOrders.Add(computer);
                         break;
                     case 5:
                         PrintMethods.PrintEndOfOrder();
@@ -98,18 +96,19 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
-            
+            userChoice = ValidateMethods.CheckingComputerCaseInput(userChoice);
+
             switch (userChoice)
             {
-                case "0":
+                case "1":
                     DomainLayer.GetSetData.SetData.SetComputerCase(listOfComputerCases[0]);
                     break;
 
-                case "1":
+                case "2":
                     DomainLayer.GetSetData.SetData.SetComputerCase(listOfComputerCases[1]);
                     break;
 
-                case "2":
+                case "3":
                     DomainLayer.GetSetData.SetData.SetComputerCase(listOfComputerCases[2]);
                     break;
             }
@@ -130,22 +129,23 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
+            userChoice = ValidateMethods.CheckingHardDiscOrProcessorInput(userChoice);
 
             switch (userChoice)
             {
-                case "0":
+                case "1":
                     DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[0]);
                     break;
 
-                case "1":
+                case "2":
                     DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[1]);
                     break;
 
-                case "2":
+                case "3":
                     DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[2]);
                     break;
 
-                case "3":
+                case "4":
                     DomainLayer.GetSetData.SetData.SetHardDisc(listOfHardDiscs[3]);
                     break;
             }
@@ -166,22 +166,23 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
+            userChoice = ValidateMethods.CheckingHardDiscOrProcessorInput(userChoice);
 
             switch (userChoice)
             {
-                case "0":
+                case "1":
                     DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[0]);
                     break;
 
-                case "1":
+                case "2":
                     DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[1]);
                     break;
 
-                case "2":
+                case "3":
                     DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[2]);
                     break;
 
-                case "3":
+                case "4":
                     DomainLayer.GetSetData.SetData.SetProcessor(listOfProcessors[3]);
                     break;
             }
@@ -202,17 +203,20 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
+            userChoice = ValidateMethods.CheckingRAMInput(userChoice);
 
             switch (userChoice)
             {
-                case "0":
+                case "1":
                     DomainLayer.GetSetData.SetData.SetRAM(listOfRAMs[0]);
                     break;
 
-                case "1":
+                case "2":
                     DomainLayer.GetSetData.SetData.SetRAM(listOfRAMs[1]);
                     break;
-            }           
+            }
+
+            listOfOrders.Add(DomainLayer.DomainLayer.NewComputer);
         }
 
         private static void Orders()
@@ -283,14 +287,17 @@ namespace PComposer
         {            
             var weight = CalculateWeight();
 
-            AdditionMethods.SelectDeliveryMethod(weight);
+            var priceOfDelivery = AdditionMethods.SelectDeliveryMethod(weight);
 
             Console.Clear();
+
+            Console.WriteLine("Racun:");
 
             OrdersPrice();
 
             Console.WriteLine("\nCijena usluge sastavljanja: " + 25 * listOfOrders.Count + " kn.");
-            Console.WriteLine("Cijena dostave: " + AdditionMethods.DeliveryOnHouseAddress(weight) + " kn.");
+            Console.WriteLine("Cijena dostave: " + priceOfDelivery + " kn.");
+            Console.WriteLine("Ukupna cijena: " + CalculateTotalPrice() + " kn.");
             Console.ReadLine();
         }
 
@@ -302,6 +309,16 @@ namespace PComposer
                 weight += computer.WeightOfTheComputer();
 
             return weight;
+        }
+
+        private static float CalculateTotalPrice()
+        {
+            float totalPrice = 0;
+
+            foreach (var computer in listOfOrders)
+                totalPrice += computer.ComponentsPrice();
+
+            return totalPrice;
         }
 
         private static void OrdersPrice()

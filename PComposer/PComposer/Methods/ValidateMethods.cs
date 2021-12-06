@@ -56,5 +56,56 @@ namespace PresentationLayer.Methods
 
             return surname;
         }
+
+        public static string CheckingComputerCaseInput(string input)
+        {
+            int inputValue;
+            bool success = int.TryParse(input, out inputValue);
+            bool valid = success && 1 <= inputValue && inputValue <= 3;
+            while (!valid)
+            {
+                Console.WriteLine("Krivi unos! Molim vas ponovo unesite.");
+                Console.Write("Unesite odabir: ");
+                input = Console.ReadLine();
+                success = int.TryParse(input, out inputValue);
+                valid = success && 1 <= inputValue && inputValue <= 3;
+            }
+
+            return input;
+        }
+
+        public static string CheckingHardDiscOrProcessorInput(string input)
+        {
+            int inputValue;
+            bool success = int.TryParse(input, out inputValue);
+            bool valid = success && 1 <= inputValue && inputValue <= 4;
+            while (!valid)
+            {
+                Console.WriteLine("Krivi unos! Molimo vas ponovo unesite.");
+                Console.Write("Unesite odabir: ");
+                input = Console.ReadLine();
+                success = int.TryParse(input, out inputValue);
+                valid = success && 1 <= inputValue && inputValue <= 4;
+            }
+
+            return input;
+        }
+
+        public static string CheckingRAMInput(string input)
+        {
+            int inputValue;
+            bool success = int.TryParse(input, out inputValue);
+            bool valid = success && 1 <= inputValue && inputValue <= 2;
+            while (!valid)
+            {
+                Console.WriteLine("Krivi unos! Molimo vas ponovo unesite.");
+                Console.Write("Unesite odabir: ");
+                input = Console.ReadLine();
+                success = int.TryParse(input, out inputValue);
+                valid = success && 1 <= inputValue && inputValue <= 2;
+            }
+
+            return input;
+        }
     }
 }

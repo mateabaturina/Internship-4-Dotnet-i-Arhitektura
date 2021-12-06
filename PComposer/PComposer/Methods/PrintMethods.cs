@@ -11,6 +11,7 @@ namespace PresentationLayer.Methods
         public static void PrintLoginInput()
         {
             Console.Clear();
+
             Console.WriteLine("Dobrodošli u PComposer!");
             Console.WriteLine("Molim vas unesite svoje podatke.");
         }
@@ -18,6 +19,7 @@ namespace PresentationLayer.Methods
         public static void PrintMenu()
         {
             Console.Clear();
+
             Console.WriteLine("Odaberite akciju:");
             Console.WriteLine();
             Console.WriteLine("1 - Sastavi i naruci novo racunalo");
@@ -29,30 +31,35 @@ namespace PresentationLayer.Methods
         public static void PrintComputerCase()
         {
             Console.Clear();
+
             Console.WriteLine("Odaberite kuciste:");
         }
 
         public static void PrintHardDisc()
         {
             Console.Clear();
+
             Console.WriteLine("Odaberite Hard disk:");
         }
 
         public static void PrintProcessor()
         {
             Console.Clear();
+
             Console.WriteLine("Odaberite procesor:");
         }
 
         public static void PrintRAM()
         {
             Console.Clear();
+
             Console.WriteLine("Odaberite RAM:");
         }
 
         public static void PrintEndOfOrder()
         {
             Console.Clear();
+
             Console.WriteLine("Uspjesno izvrsena narudzba!");
             Console.Write("Pritisnite Enter za povratak na izbornik...");
             Console.ReadLine();
@@ -82,6 +89,8 @@ namespace PresentationLayer.Methods
 
         public static void PrintSelectDeliveryMethod()
         {
+            Console.Clear();
+
             Console.WriteLine("Molimo odaberite nacin dostave:");
             Console.WriteLine();
             Console.WriteLine("1 - Osobno preuzimanje");
@@ -91,6 +100,7 @@ namespace PresentationLayer.Methods
         public static void PrintSelectDiscountMenu()
         {
             Console.Clear();
+
             Console.WriteLine("Odaberite popust:");
             Console.WriteLine();
             Console.WriteLine("1 - Kupon popust za vjerno clanstvo");
