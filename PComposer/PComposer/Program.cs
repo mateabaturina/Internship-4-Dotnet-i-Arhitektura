@@ -9,12 +9,12 @@ namespace PComposer
     class Program
     {
         static void Main(string[] args)
-        {      
+        {
             LoginInput();
         }
 
         private static void LoginInput()
-        {   
+        {
             PrintMethods.PrintLoginInput();
 
             var name = ValidateMethods.NameInput();
@@ -31,7 +31,7 @@ namespace PComposer
             {
                 showMenu = MainMenu();
             }
-        }        
+        }
 
         private static bool MainMenu()
         {

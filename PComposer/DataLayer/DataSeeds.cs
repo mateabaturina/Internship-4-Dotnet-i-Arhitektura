@@ -26,5 +26,17 @@ namespace DataLayer
             new RAM(size: 4, price: 90),
             new RAM(size: 8, price: 250),
         };
+
+        private static readonly Random randomDiscount = new Random();
+
+        public static readonly Dictionary<string, int> DiscountCodes = new()
+        {
+            { "mijaumijau", randomDiscount.Next(1, 100) },
+            { "mackamacka", randomDiscount.Next(1, 100) },
+            { "marvelloki", randomDiscount.Next(1, 100) },
+            { "badbatch66", randomDiscount.Next(1, 100) },
+            { "reddwarf02", randomDiscount.Next(1, 100) },
+            { "doctorwho2", randomDiscount.Next(1, 100) }
+        };
     }
 }

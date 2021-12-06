@@ -103,10 +103,16 @@ namespace PresentationLayer.Methods
             Console.WriteLine("Odaberite popust:");
             Console.WriteLine();
             Console.WriteLine("1 - Kupon popust za vjerno clanstvo");
-            Console.WriteLine("2 - Popust na kolicinu");
+            Console.WriteLine("2 - Popust na kolicinu (nije dovrsena funkcija)");
             Console.WriteLine("3 - Popust unosom koda");
             Console.WriteLine("4 - Nastavite kupovinu bez popusta");
-            
+        }
+
+        public static void PrintDiscount()
+        {
+            Console.Clear();
+
+            Console.WriteLine("\r\nUnesite kod:");
         }
     }
 }

@@ -63,6 +63,12 @@ namespace PresentationLayer.Methods
                 case "1":
                     priceWithDiscount = FaithfulMembershipDiscount(totalPrice);
                     break;
+                /*case "2":
+                    priceWithDiscount = QuantityDiscount(totalPrice);
+                    break;*/
+                case "3":
+                    priceWithDiscount = CodeDiscount(totalPrice);
+                    break;
                 case "4":
                     priceWithDiscount = (int)totalPrice;
                     break;
@@ -74,6 +80,31 @@ namespace PresentationLayer.Methods
         public static int FaithfulMembershipDiscount(float totalPrice)
         {
             var priceWithDiscount = totalPrice - 100;
+
+            return (int)priceWithDiscount;
+        }
+
+        /*public static int QuantityDiscount(float totalPrice)
+        {
+
+        }*/
+
+        public static int CodeDiscount(float totalPrice)
+        {
+            PrintMethods.PrintDiscount();
+
+            var input = Console.ReadLine();
+
+            float priceWithDiscount = totalPrice;
+
+            bool keyExists = DataLayer.DataSeeds.DiscountCodes.ContainsKey(input);
+            if (keyExists)
+            {
+                priceWithDiscount = totalPrice - (totalPrice * (DataLayer.DataSeeds.DiscountCodes[input] / 100));
+            }
+
+            else
+                Console.WriteLine("Ne postoji taj kod!");
 
             return (int)priceWithDiscount;
         }
