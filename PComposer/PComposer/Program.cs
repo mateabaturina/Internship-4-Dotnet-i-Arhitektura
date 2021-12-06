@@ -289,15 +289,20 @@ namespace PComposer
 
             var priceOfDelivery = AdditionMethods.SelectDeliveryMethod(weight);
 
+            var totalPrice = CalculateTotalPrice() + priceOfDelivery;
+
+            var priceWithDiscount = AdditionMethods.SelectDiscount(totalPrice);
+
             Console.Clear();
 
             Console.WriteLine("Racun:");
 
             OrdersPrice();
 
-            Console.WriteLine("\nCijena usluge sastavljanja: " + 25 * listOfOrders.Count + " kn.");
+            Console.WriteLine("\nCijena usluge sastavljanja: " + 25 * (4* listOfOrders.Count) + " kn.");
             Console.WriteLine("Cijena dostave: " + priceOfDelivery + " kn.");
-            Console.WriteLine("Ukupna cijena: " + CalculateTotalPrice() + " kn.");
+            Console.WriteLine("Ukupna cijena: " + totalPrice + " kn.");
+            Console.WriteLine("Ukupna cijena sa popustom: " + priceWithDiscount  + " kn.");
             Console.ReadLine();
         }
 

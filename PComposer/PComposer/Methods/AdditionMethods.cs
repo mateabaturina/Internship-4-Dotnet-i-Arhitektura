@@ -46,33 +46,30 @@ namespace PresentationLayer.Methods
             return priceOfDelivery;
         }
 
-        private static void SelectDiscount()
+        public static int SelectDiscount(float totalPrice)
         {
-            var showMenu = true;
-            while (showMenu)
-            {
-                showMenu = SelectDiscountMenu();
-            }
-        }
+            var priceWithDiscount = 0;
 
-        public static bool SelectDiscountMenu()
-        {
-            PrintMethods.PrintSelectDiscountMenu();
+            PrintMethods.PrintSelectDiscount();
 
             switch (Console.ReadLine())
             {
-                /*case "1":
-                    FaithfulMembershipDiscount();
-                    return true;
-                case "2":
-                    QuantityDicount();
-                    return true;
-                case "3":
-                    CodeDiscount();
-                    return true;*/
-                default:
-                    return true;
+                case "1":
+                    priceWithDiscount = FaithfulMembershipDiscount(totalPrice);
+                    break;
+                case "4":
+                    priceWithDiscount = (int)totalPrice;
+                    break;
             }
+
+            return priceWithDiscount;
+        }
+
+        public static int FaithfulMembershipDiscount(float totalPrice)
+        {
+            var priceWithDiscount = totalPrice - 100;
+
+            return (int)priceWithDiscount;
         }
     }
 }

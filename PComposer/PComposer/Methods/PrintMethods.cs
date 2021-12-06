@@ -97,7 +97,7 @@ namespace PresentationLayer.Methods
             Console.WriteLine("2 - Dostava na kucnu adresu");
         }
 
-        public static void PrintSelectDiscountMenu()
+        public static void PrintSelectDiscount()
         {
             Console.Clear();
 
@@ -106,6 +106,7 @@ namespace PresentationLayer.Methods
             Console.WriteLine("1 - Kupon popust za vjerno clanstvo");
             Console.WriteLine("2 - Popust na kolicinu");
             Console.WriteLine("3 - Popust unosom koda");
+            Console.WriteLine("4 - Nastavite kupovinu bez popusta");
             Console.Write("\r\nUnesite odabir: ");
         }
     }
