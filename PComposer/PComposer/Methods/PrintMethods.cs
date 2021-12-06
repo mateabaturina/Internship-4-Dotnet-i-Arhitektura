@@ -26,6 +26,30 @@ namespace PresentationLayer.Methods
             Console.Write("\r\nUnesite odabir: ");
         }
 
+        public static void PrintComputerCase()
+        {
+            Console.Clear();
+            Console.WriteLine("Odaberite kuciste:");
+        }
+
+        public static void PrintHardDisc()
+        {
+            Console.Clear();
+            Console.WriteLine("Odaberite Hard disk:");
+        }
+
+        public static void PrintProcessor()
+        {
+            Console.Clear();
+            Console.WriteLine("Odaberite procesor:");
+        }
+
+        public static void PrintRAM()
+        {
+            Console.Clear();
+            Console.WriteLine("Odaberite RAM:");
+        }
+
         public static void PrintEndOfOrder()
         {
             Console.Clear();

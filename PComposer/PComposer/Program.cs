@@ -19,11 +19,9 @@ namespace PComposer
         {
             PrintMethods.PrintLoginInput();
 
-            Console.Write("\r\nUnesite ime: ");
-            var name = Console.ReadLine();
+            var name = ValidateMethods.NameInput();
 
-            Console.Write("\rUnesite prezime: ");
-            var surname = Console.ReadLine();
+            var surname = ValidateMethods.SurnameInput();
 
             Console.Write("\rUnesite adresu: ");
             var adress = Console.ReadLine();
@@ -59,7 +57,6 @@ namespace PComposer
 
         private static void CreatingNewComputer()
         {
-
             foreach (int value in Enumerable.Range(1, 5))
             {
 
@@ -86,8 +83,7 @@ namespace PComposer
 
         private static void SelectComputerCase()
         {
-            Console.Clear();
-            Console.WriteLine("Odaberite kuciste:");
+            PrintMethods.PrintComputerCase();
 
             var listOfComputerCases = DomainLayer.GetSetData.GetData.GetComputerCase();
 
@@ -119,8 +115,7 @@ namespace PComposer
 
         private static void SelectHardDisc()
         {
-            Console.Clear();
-            Console.WriteLine("Odaberite Hard disk:");
+            PrintMethods.PrintHardDisc();
 
             var listOfHardDiscs = DomainLayer.GetSetData.GetData.GetHardDisc();
 
@@ -156,8 +151,7 @@ namespace PComposer
 
         private static void SelectProcessor()
         {
-            Console.Clear();
-            Console.WriteLine("Odaberite procesor:");
+            PrintMethods.PrintProcessor();
 
             var listOfProcessors = DomainLayer.GetSetData.GetData.GetProcessor();
 
@@ -193,8 +187,7 @@ namespace PComposer
 
         private static void SelectRAM()
         {
-            Console.Clear();
-            Console.WriteLine("Odaberite RAM:");
+            PrintMethods.PrintRAM();
 
             var listOfRAMs = DomainLayer.GetSetData.GetData.GetRAM();
 
