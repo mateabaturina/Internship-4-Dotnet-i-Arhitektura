@@ -23,7 +23,7 @@ namespace PComposer
 
             var surname = ValidateMethods.SurnameInput();
 
-            Console.Write("\rUnesite adresu: ");
+            Console.Write("\r\nUnesite adresu: ");
             var adress = Console.ReadLine();
 
             DomainLayer.GetSetData.SetData.Login(name, surname, adress);
@@ -219,9 +219,9 @@ namespace PComposer
 
             switch (Console.ReadLine())
             {
-                /*case "1":
+                case "1":
                     ConcludePurchase();
-                    return true;*/
+                    return true;
                 case "2":
                     CreatingNewComputer();
                     return true;
@@ -254,21 +254,21 @@ namespace PComposer
             Console.ReadLine();
         }*/
 
-        private static int Delivery(float weight)
+        private static void ConcludePurchase()
         {
-            var user = DomainLayer.DomainLayer.NewUser;
-            var priceOfDelivery = 0;
+            PrintMethods.PrintConcludePurchase();
 
-            if (weight < 3)
-                priceOfDelivery = 5 * (user.Distance / 10);
-            
-            if (weight >= 3 & weight < 10)
-                priceOfDelivery = 3 * (user.Distance / 5);
-
-            if (weight >= 10)
-                priceOfDelivery = 50 +  10 * (user.Distance / 20);
-
-            return priceOfDelivery;
+            switch (Console.ReadLine())
+            {
+                /*case "1":
+                    EndPurchase();
+                    return true;
+                case "2":
+                    return false;
+                default:
+                    return true;*/
+            }
         }
+        
     }
 }

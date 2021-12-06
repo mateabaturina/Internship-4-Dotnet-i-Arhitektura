@@ -71,5 +71,35 @@ namespace PresentationLayer.Methods
             Console.WriteLine("3 - Odustanite od narudbe");
             Console.Write("\r\nUnesite odabir: ");
         }
+
+        public static void PrintConcludePurchase()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Zakljucite kupovinu:");
+            Console.WriteLine();
+            Console.WriteLine("1 - Da");
+            Console.WriteLine("2 - Ne");
+            Console.Write("\r\nUnesite odabir: ");
+        }
+
+        public static void PrintSelectDeliveryMethod()
+        {
+            Console.WriteLine("Molimo odaberite nacin dostave:");
+            Console.WriteLine();
+            Console.WriteLine("1 - Osobno preuzimanje");
+            Console.WriteLine("2 - Dostava na kucnu adresu");
+        }
+
+        public static void PrintSelectDiscountMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Odaberite popust:");
+            Console.WriteLine();
+            Console.WriteLine("1 - Kupon popust za vjerno clanstvo");
+            Console.WriteLine("2 - Popust na kolicinu");
+            Console.WriteLine("3 - Popust unosom koda");
+            Console.Write("\r\nUnesite odabir: ");
+        }
     }
 }
