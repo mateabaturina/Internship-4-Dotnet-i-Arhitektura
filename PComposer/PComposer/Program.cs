@@ -213,7 +213,22 @@ namespace PComposer
                     DomainLayer.GetSetData.SetData.SetRAM(listOfRAMs[1]);
                     break;
             }           
-        }       
+        }
+
+        private static void Orders()
+        {
+            var count = 1;
+
+            foreach (var order in listOfOrders)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Narudzba " + count++ + " :");
+                Console.WriteLine("Kuciste: " + order.ComputerCase +
+                                  "\nHard disk: " + order.HardDisk +
+                                  "\nProcesor: " + order.Processor +
+                                  "\nRAM: " + order.RAM);
+            }
+        }
 
         private static bool ShowOrdersMenu()
         {
@@ -232,6 +247,7 @@ namespace PComposer
                     CreatingNewComputer();
                     return true;
                 case "3":
+                    listOfOrders.Clear();
                     return false;
                 default:
                     return true;
@@ -247,30 +263,15 @@ namespace PComposer
             }
         }
 
-        private static void Orders()
-        {
-            var count = 1;
-
-            foreach (var order in listOfOrders)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Narudzba " + count++ + " :");
-                Console.WriteLine("Kuciste: " + order.ComputerCase + 
-                                  "\nHard disk: " + order.HardDisk +
-                                  "\nProcesor: " + order.Processor +
-                                  "\nRAM: " + order.RAM);
-            }
-        }
-
         private static bool ConcludePurchase()
         {
             PrintMethods.PrintConcludePurchase();
 
             switch (Console.ReadLine())
             {
-                /*case "1":
+                case "1":
                     EndPurchase();
-                    return true;*/
+                    return true;
                 case "2":
                     return false;
                 default:
@@ -278,18 +279,44 @@ namespace PComposer
             }
         }
 
-        /*private static void EndPurchase()
-        {
-            var user = DomainLayer.DomainLayer.NewUser;
-            var computer = DomainLayer.DomainLayer.NewComputer;
-            var weight = computer.WeightOfTheComputer();
+        private static void EndPurchase()
+        {            
+            var weight = CalculateWeight();
 
-            Console.WriteLine("Kupac: " + user.Name + " " + user.Surname);
-            Console.WriteLine("Tezina racunala je " + computer.WeightOfTheComputer() + " kg.");
-            Console.WriteLine("Cijena racunala je " + computer.ComponentsPrice() + " kn.");
-            Console.WriteLine("Cijena dostave je " + AdditionMethods.DeliveryOnHouseAddress(weight) + " kn.");
+            AdditionMethods.SelectDeliveryMethod(weight);
+
+            Console.Clear();
+
+            OrdersPrice();
+
+            Console.WriteLine("\nCijena usluge sastavljanja: " + 25 * listOfOrders.Count + " kn.");
+            Console.WriteLine("Cijena dostave: " + AdditionMethods.DeliveryOnHouseAddress(weight) + " kn.");
             Console.ReadLine();
-        }*/
+        }
+
+        private static float CalculateWeight()
+        {
+            float weight = 0;
+
+            foreach (var computer in listOfOrders)
+                weight += computer.WeightOfTheComputer();
+
+            return weight;
+        }
+
+        private static void OrdersPrice()
+        {
+            var count = 1;
+
+            foreach (var computer in listOfOrders)
+            {
+                Console.WriteLine("\nCijena racunala " + count++ + " : " + computer.ComponentsPrice() + " kn.");
+                Console.WriteLine("Cijena kucista: " + computer.ComputerCase.Price + " kn.");
+                Console.WriteLine("Cijena Hard diska: " + computer.HardDisk.Price + " kn.");
+                Console.WriteLine("Cijena procesora: " + computer.Processor.Price + " kn.");
+                Console.WriteLine("Cijena RAMa: " + computer.RAM.Price + " kn.");
+            }
+        }
         
     }
 }
