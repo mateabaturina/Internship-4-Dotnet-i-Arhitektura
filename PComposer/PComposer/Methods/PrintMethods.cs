@@ -84,7 +84,6 @@ namespace PresentationLayer.Methods
             Console.WriteLine();
             Console.WriteLine("1 - Da");
             Console.WriteLine("2 - Ne");
-            Console.Write("\r\nUnesite odabir: ");
         }
 
         public static void PrintSelectDeliveryMethod()
@@ -107,7 +106,7 @@ namespace PresentationLayer.Methods
             Console.WriteLine("2 - Popust na kolicinu");
             Console.WriteLine("3 - Popust unosom koda");
             Console.WriteLine("4 - Nastavite kupovinu bez popusta");
-            Console.Write("\r\nUnesite odabir: ");
+            
         }
     }
 }

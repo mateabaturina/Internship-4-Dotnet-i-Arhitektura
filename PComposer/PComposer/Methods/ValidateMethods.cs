@@ -57,7 +57,7 @@ namespace PresentationLayer.Methods
             return surname;
         }
 
-        public static string CheckingComputerCaseInput(string input)
+        public static string Checking1To3Input(string input)
         {
             int inputValue;
             bool success = int.TryParse(input, out inputValue);
@@ -74,7 +74,7 @@ namespace PresentationLayer.Methods
             return input;
         }
 
-        public static string CheckingHardDiscOrProcessorInput(string input)
+        public static string Checking1To4Input(string input)
         {
             int inputValue;
             bool success = int.TryParse(input, out inputValue);
@@ -91,7 +91,7 @@ namespace PresentationLayer.Methods
             return input;
         }
 
-        public static string CheckingRAMInput(string input)
+        public static string Checking1To2Input(string input)
         {
             int inputValue;
             bool success = int.TryParse(input, out inputValue);

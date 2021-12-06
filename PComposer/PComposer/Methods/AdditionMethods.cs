@@ -15,8 +15,10 @@ namespace PresentationLayer.Methods
             PrintMethods.PrintSelectDeliveryMethod();
 
             Console.Write("\r\nUnesite odabir: ");
+            var userChoice = Console.ReadLine();
+            userChoice = ValidateMethods.Checking1To2Input(userChoice);
 
-            switch (Console.ReadLine())
+            switch (userChoice)
             {
                 case "1":
                     priceOfDelivery = 0;
@@ -52,7 +54,11 @@ namespace PresentationLayer.Methods
 
             PrintMethods.PrintSelectDiscount();
 
-            switch (Console.ReadLine())
+            Console.Write("\r\nUnesite odabir: ");
+            var userChoice = Console.ReadLine();
+            userChoice = ValidateMethods.Checking1To4Input(userChoice);
+
+            switch (userChoice)
             {
                 case "1":
                     priceWithDiscount = FaithfulMembershipDiscount(totalPrice);

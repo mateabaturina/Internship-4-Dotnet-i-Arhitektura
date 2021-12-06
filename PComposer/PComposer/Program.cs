@@ -96,7 +96,7 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
-            userChoice = ValidateMethods.CheckingComputerCaseInput(userChoice);
+            userChoice = ValidateMethods.Checking1To3Input(userChoice);
 
             switch (userChoice)
             {
@@ -129,7 +129,7 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
-            userChoice = ValidateMethods.CheckingHardDiscOrProcessorInput(userChoice);
+            userChoice = ValidateMethods.Checking1To4Input(userChoice);
 
             switch (userChoice)
             {
@@ -166,7 +166,7 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
-            userChoice = ValidateMethods.CheckingHardDiscOrProcessorInput(userChoice);
+            userChoice = ValidateMethods.Checking1To4Input(userChoice);
 
             switch (userChoice)
             {
@@ -203,7 +203,7 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
-            userChoice = ValidateMethods.CheckingRAMInput(userChoice);
+            userChoice = ValidateMethods.Checking1To2Input(userChoice);
 
             switch (userChoice)
             {
@@ -271,7 +271,11 @@ namespace PComposer
         {
             PrintMethods.PrintConcludePurchase();
 
-            switch (Console.ReadLine())
+            Console.Write("\r\nUnesite odabir: ");
+            var userChoice = Console.ReadLine();
+            userChoice = ValidateMethods.Checking1To2Input(userChoice);
+
+            switch (userChoice)
             {
                 case "1":
                     EndPurchase();
