@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DataLayer.Entities;
+using PresentationLayer.Methods;
 
 namespace PComposer
 {
@@ -15,9 +17,7 @@ namespace PComposer
 
         private static void LoginInput()
         {
-            Console.Clear();
-            Console.WriteLine("Dobrodošli u PComposer!");
-            Console.WriteLine("Molim vas unesite svoje podatke.");
+            PrintMethods.PrintLoginInput();
 
             Console.Write("\r\nUnesite ime: ");
             var name = Console.ReadLine();
@@ -35,22 +35,11 @@ namespace PComposer
             {
                 showMenu = MainMenu();
             }
-        }
-
-        private static void PrintMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("Odaberite akciju:");
-            Console.WriteLine();
-            Console.WriteLine("1 - Sastavi i naruci novo racunalo");
-            Console.WriteLine("2 - Prikazi moje narudzbe");
-            Console.WriteLine("3 - Odjavi se");
-            Console.Write("\r\nUnesite odabir: ");
-        }
+        }        
 
         private static bool MainMenu()
         {
-            PrintMenu();
+            PrintMethods.PrintMenu();
 
             switch (Console.ReadLine())
             {
@@ -68,55 +57,30 @@ namespace PComposer
             }
         }
 
-        private static void PrintCreatingNewComputerMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("Dobrodosli u sastavljanje novog racunala!");
-            Console.WriteLine("Odaberite akciju:");
-            Console.WriteLine();
-            Console.WriteLine("1 - Kuciste");
-            Console.WriteLine("2 - Hard disk");
-            Console.WriteLine("3 - Procesor");
-            Console.WriteLine("4 - RAM");
-            Console.WriteLine("5 - Povratak na glavni izbornik");
-            Console.Write("\r\nUnesite odabir: ");
-        }
-
         private static void CreatingNewComputer()
         {
-            PrintCreatingNewComputerMenu();
 
-            Console.Clear();
-
-            var showMenu = true;
-            while (showMenu)
+            foreach (int value in Enumerable.Range(1, 5))
             {
-                showMenu = CreatingNewComputerMenu();
-            }
-        }
 
-        private static bool CreatingNewComputerMenu()
-        {
-            PrintCreatingNewComputerMenu();
-
-            switch (Console.ReadLine())
-            {
-                case "1":
-                    SelectComputerCase();
-                    return true;
-                case "2":
-                    SelectHardDisc();
-                    return true;
-                case "3":
-                    SelectProcessor();
-                    return true;
-                case "4":
-                    SelectRAM();
-                    return true;
-                case "5":
-                    return false;
-                default:
-                    return true;
+                switch (value)
+                {
+                    case 1:
+                        SelectComputerCase();
+                        break;
+                    case 2:
+                        SelectHardDisc();
+                        break;
+                    case 3:
+                        SelectProcessor();
+                        break;
+                    case 4:
+                        SelectRAM();
+                        break;
+                    case 5:
+                        PrintMethods.PrintEndOfOrder();
+                        break;
+                }
             }
         }
 
@@ -253,28 +217,12 @@ namespace PComposer
                 case "1":
                     DomainLayer.GetSetData.SetData.SetRAM(listOfRAMs[1]);
                     break;
-            }
-
-            
-        }
-
-        private static void PrintShowOrdersMenu()
-        {
-            Console.Clear();
-
-            Orders();
-
-            Console.WriteLine("Odaberite akciju:");
-            Console.WriteLine();
-            Console.WriteLine("1 - Zakljucite kupovinu");
-            Console.WriteLine("2 - Sastavite novo racunalo");
-            Console.WriteLine("3 - Odustanite od narudbe");
-            Console.Write("\r\nUnesite odabir: ");
-        }
+            }           
+        }       
 
         private static bool ShowOrdersMenu()
         {
-            PrintShowOrdersMenu();
+            PrintMethods.PrintShowOrdersMenu();
 
             switch (Console.ReadLine())
             {
@@ -293,10 +241,6 @@ namespace PComposer
 
         private static void ShowOrders()
         {
-            PrintShowOrdersMenu();
-
-            Console.Clear();
-
             var showMenu = true;
             while (showMenu)
             {
@@ -304,7 +248,7 @@ namespace PComposer
             }
         }
 
-        private static void Orders()
+        /*private static void PrintOrder()
         {   
             var user = DomainLayer.DomainLayer.NewUser;
             var computer = DomainLayer.DomainLayer.NewComputer;
@@ -314,7 +258,8 @@ namespace PComposer
             Console.WriteLine("Tezina racunala je " + computer.WeightOfTheComputer() + " kg.");
             Console.WriteLine("Cijena racunala je " + computer.ComponentsPrice() + " kn.");
             Console.WriteLine("Cijena dostave je " + Delivery(weight) + " kn.");
-        }
+            Console.ReadLine();
+        }*/
 
         private static int Delivery(float weight)
         {
@@ -322,13 +267,13 @@ namespace PComposer
             var priceOfDelivery = 0;
 
             if (weight < 3)
-                priceOfDelivery = 5 * (user.Distance % 10);
+                priceOfDelivery = 5 * (user.Distance / 10);
             
             if (weight >= 3 & weight < 10)
-                priceOfDelivery = 3 * (user.Distance % 5);
+                priceOfDelivery = 3 * (user.Distance / 5);
 
             if (weight >= 10)
-                priceOfDelivery = 50 +  10 * (user.Distance % 20);
+                priceOfDelivery = 50 +  10 * (user.Distance / 20);
 
             return priceOfDelivery;
         }
