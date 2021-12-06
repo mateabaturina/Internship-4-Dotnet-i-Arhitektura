@@ -9,14 +9,12 @@ namespace PComposer
     class Program
     {
         static void Main(string[] args)
-        {
-            var listOfOrders = new List<Computer>();
-
+        {      
             LoginInput();
         }
 
         private static void LoginInput()
-        {
+        {   
             PrintMethods.PrintLoginInput();
 
             var name = ValidateMethods.NameInput();
@@ -55,6 +53,8 @@ namespace PComposer
             }
         }
 
+        static List<Computer> listOfOrders = new List<Computer>();
+
         private static void CreatingNewComputer()
         {
             foreach (int value in Enumerable.Range(1, 5))
@@ -73,6 +73,8 @@ namespace PComposer
                         break;
                     case 4:
                         SelectRAM();
+                        var computer = DomainLayer.DomainLayer.NewComputer;
+                        listOfOrders.Add(computer);
                         break;
                     case 5:
                         PrintMethods.PrintEndOfOrder();
@@ -96,7 +98,7 @@ namespace PComposer
 
             Console.WriteLine("\r\nUnesite odabir: ");
             var userChoice = Console.ReadLine();
-
+            
             switch (userChoice)
             {
                 case "0":
@@ -191,7 +193,7 @@ namespace PComposer
 
             var listOfRAMs = DomainLayer.GetSetData.GetData.GetRAM();
 
-            var count = 0;
+            var count = 1;
 
             foreach (var RAM in listOfRAMs)
             {
@@ -215,6 +217,10 @@ namespace PComposer
 
         private static bool ShowOrdersMenu()
         {
+            Console.Clear();
+
+            Orders();
+
             PrintMethods.PrintShowOrdersMenu();
 
             switch (Console.ReadLine())
@@ -241,20 +247,22 @@ namespace PComposer
             }
         }
 
-        /*private static void PrintOrder()
-        {   
-            var user = DomainLayer.DomainLayer.NewUser;
-            var computer = DomainLayer.DomainLayer.NewComputer;
-            var weight = computer.WeightOfTheComputer();
+        private static void Orders()
+        {
+            var count = 1;
 
-            Console.WriteLine("Kupac: " + user.Name + " " + user.Surname);
-            Console.WriteLine("Tezina racunala je " + computer.WeightOfTheComputer() + " kg.");
-            Console.WriteLine("Cijena racunala je " + computer.ComponentsPrice() + " kn.");
-            Console.WriteLine("Cijena dostave je " + Delivery(weight) + " kn.");
-            Console.ReadLine();
-        }*/
+            foreach (var order in listOfOrders)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Narudzba " + count++ + " :");
+                Console.WriteLine("Kuciste: " + order.ComputerCase + 
+                                  "\nHard disk: " + order.HardDisk +
+                                  "\nProcesor: " + order.Processor +
+                                  "\nRAM: " + order.RAM);
+            }
+        }
 
-        private static void ConcludePurchase()
+        private static bool ConcludePurchase()
         {
             PrintMethods.PrintConcludePurchase();
 
@@ -262,13 +270,26 @@ namespace PComposer
             {
                 /*case "1":
                     EndPurchase();
-                    return true;
+                    return true;*/
                 case "2":
                     return false;
                 default:
-                    return true;*/
+                    return true;
             }
         }
+
+        /*private static void EndPurchase()
+        {
+            var user = DomainLayer.DomainLayer.NewUser;
+            var computer = DomainLayer.DomainLayer.NewComputer;
+            var weight = computer.WeightOfTheComputer();
+
+            Console.WriteLine("Kupac: " + user.Name + " " + user.Surname);
+            Console.WriteLine("Tezina racunala je " + computer.WeightOfTheComputer() + " kg.");
+            Console.WriteLine("Cijena racunala je " + computer.ComponentsPrice() + " kn.");
+            Console.WriteLine("Cijena dostave je " + AdditionMethods.DeliveryOnHouseAddress(weight) + " kn.");
+            Console.ReadLine();
+        }*/
         
     }
 }

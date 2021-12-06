@@ -60,10 +60,7 @@ namespace PresentationLayer.Methods
 
         public static void PrintShowOrdersMenu()
         {
-            Console.Clear();
-
-            //PrintOrder();
-
+            Console.WriteLine();
             Console.WriteLine("Odaberite akciju:");
             Console.WriteLine();
             Console.WriteLine("1 - Zakljucite kupovinu");
